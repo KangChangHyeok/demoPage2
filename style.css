@@ -536,6 +536,7 @@ body {
 .creamCoatShopLink .shopLink .text .description {
     font-weight: 300;
 }
+
 .premiumCollection {
     display: flex;
     flex-direction: column;
@@ -545,6 +546,96 @@ body {
     color: white;
 }
 
+.halfCoat {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    width: 100%;
+    height: calc(100vw * 1.3);
+    position: relative;
+}
+
+.halfCoat .top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100vw * 0.35);
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 20px;
+}
+
+.halfCoat .top p {
+    margin-top: -3px;
+    font-size: 3.5cqw;
+}
+
+.halfCoat .top .imageSlider {
+    position: relative;
+    width: calc(100% * 0.3);
+    height: calc(100vw * 0.35);
+}
+
+.halfCoat .title {
+    position: absolute;
+    top: calc(100vw * 0.27);
+    left: 20px;
+    z-index: 2;
+    display: flex;
+    width: calc(100% - 40px);
+    font-size: 16cqw; /* container query width의 20% */
+    font-weight: bold;
+    text-align: center;
+    justify-content: center;
+    
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.5); 
+    animation: titleTextAnimation 1s ease-out forwards;
+    opacity: 0; /* 초기 투명도 0 */
+    transform: translateY(20px); /* 초기 위치: 10px 아래 */
+}
+
+.halfCoat .title strong {
+    font-weight: 400;
+}
+
+.halfCoat .title p {
+    font-weight: 200;
+}
+
+.halfCoat .leftImageSlider {
+    margin-top: 20px;
+    left: 20px;
+    z-index: 3;
+    width: 48%;
+}
+
+.halfCoat .leftImageSlider .imageSlider {
+    width: 100%;
+    height: calc(100vw * 0.35);
+}
+
+
+.halfCoat .rightBottomImageSlider {
+    position: relative;
+    top: -50px;
+    margin-top: 20px;
+    align-self: flex-end;
+    z-index: 3;
+    width: 20%;
+}
+
+.halfCoat .rightBottomImageSlider .imageSlider {
+    width: 100%;
+    height: calc(100vw * 0.3);
+}
+
+.halfCoat .productLink {
+    position: relative;
+    margin-left: 20px;
+    top: -60px;
+}
+
 .premiumCollection h1 {
     font-size: 16cqw;
     font-weight: 500;
@@ -552,7 +643,7 @@ body {
     padding-top: 40px;
 }
 
-.premiumCollection .images {
+.woolJacket .images {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -562,25 +653,61 @@ body {
     margin-right: 0 ;
 }
 
-.premiumCollection .images img {
+.woolJacket .images img {
     width: 70%;
 }
 
-.premiumCollection strong {
-    font-size: 3.5cqw; 
-    font-weight: 400;
-    text-align: left;
-    margin-left: 20px;
-    margin-top: 40px;
+.theFlowImage {
+    position: relative;
+    width: 100%;
 }
 
-.premiumCollection p {
-    font-size: 3.3cqw; 
+.theFlowImage img {
+    width: 100%;
+}
+
+.theFlowImage p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 6.5cqw;
     font-weight: 300;
+}
+
+.woolJacket {
+    margin-bottom: 50px;
+}
+
+.woolJacket h1 {
+    font-size: 16cqw;
+    font-weight: 400;
     text-align: left;
+    padding-left: 15px;
+    padding-top: 40px;
+}
+
+.woolJacket .description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 20px;
+    padding-top: 40px;
+}
+
+.woolJacket .description strong {
+    font-size: 3.5cqw;
+    font-weight: 500;
+}
+
+.woolJacket .description p {
+    font-size: 3.3cqw;
+    font-weight: 300;
     line-height: 1.5;
-    margin-left: 20px;
-    margin-top: 10px;
 }
 
 .brownJacket-container {
@@ -597,6 +724,19 @@ body {
     z-index: 1;
 }
 
+.brownJacket-container .shopLink {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    z-index: 1;
+}
+
+.brownJacket-container .shopLink .emptyContainer {
+    height: 10px;
+}
+
 .brownJacket-container .subImages {
     position: absolute;
     display: flex;
@@ -604,7 +744,7 @@ body {
     justify-content: flex-start; /* 왼쪽 정렬 */
     flex-direction: row;
     gap: 5px;
-    top: calc(100vw * 0.75);
+    top: calc(100vw * 0.72);
     left: 0;
     width: 60%;
     padding: 0;/* 좌우 여백 */
@@ -626,12 +766,14 @@ body {
     color: white;
     z-index: 1;
     margin-top: 20px;
-    padding: 20px;
-    width: 100%; /* 120%에서 100%로 변경 */
+    width: 120%; /* 120%에서 100%로 변경 */
     top: calc(100vw * 0.5);
     left: calc(100vw * 0.25);
     margin: 0 auto;
     max-width: 90vw; /* 최대 너비 제한 */
+    /* background-color: red; */
+    line-height: 1.5;
+    text-align: center;
 }
 
 .theFlowBlack {
@@ -643,14 +785,14 @@ body {
 }
 
 .theFlowBlack h1 {
-    font-size: 20cqw;
-    font-weight: 400;
+    font-size: 21.5cqw;
+    font-weight: 300;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
 .theFlowBlack .imageSlider {
-    width: calc(100% - 20px);
+    width: 100%;
     margin: 0 auto;
     height: calc(100vw * 1.26);
 }
@@ -661,6 +803,34 @@ body {
     text-align: center;
     line-height: 1.6;
     margin:40px 0;
+    color: rgba(144, 146, 144, 1);
+}
+
+.theFlowBlack .subImages {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    align-items: space-between;
+    background-color: red;
+}
+
+.theFlowBlack .subImages .left {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+
+.theFlowBlack .subImages .right {
+    width: 65%;
+    align-items: right;
+}
+
+.theFlowBlack .subImages .right img {
+    width: 50%;
+    height: 50%;
 }
 
 @keyframes categoryAnimation {

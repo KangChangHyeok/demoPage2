@@ -503,6 +503,397 @@ function initScrollAnimations() {
             creamCoatShopLinkTextObserver.observe(creamCoatShopLinkSection);
         }
     }
+
+    const halfCoatElements = [
+        '.halfCoat .top',
+        '.halfCoat .top .imageSlider',
+        '.halfCoat .title',
+        '.halfCoat .leftImageSlider',
+        '.halfCoat .rightBottomImageSlider',
+        '.halfCoat .productLink'
+    ];
+
+    // 모든 요소 초기 상태 설정
+    halfCoatElements.forEach((selector, index) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(10px)'; // 10px 아래로 이동
+            element.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        }
+    });
+    
+    // Intersection Observer 설정
+    const halfCoatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // 화면에 나타나면 순차적으로 애니메이션 실행
+                halfCoatElements.forEach((selector, index) => {
+                    const element = document.querySelector(selector);
+                    if (element) {
+                        setTimeout(() => {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)'; // 원래 위치로
+                            
+                            console.log(`${selector} 애니메이션 시작 (${index + 1}번째)`);
+                        }, index * 300); // 0.3초 간격으로 지연
+                    }
+                });
+                
+                // 한 번만 실행되도록 observer 해제
+                halfCoatObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });   
+    
+    // halfCoat 섹션을 관찰
+    const halfCoatSection = document.querySelector('.halfCoat');
+    if (halfCoatSection) {
+        halfCoatObserver.observe(halfCoatSection);
+    }
+
+    const theFlowImageImg = document.querySelector('.theFlowImage img');
+
+    if (theFlowImageImg) {
+        // theFlowImage img 초기 상태 설정
+        theFlowImageImg.style.opacity = '0';
+        theFlowImageImg.style.transform = 'scale(1.2)'; // 1.2배 크기
+        theFlowImageImg.style.filter = 'blur(10px)'; // 블러 처리
+        theFlowImageImg.style.transition = 'opacity 1.5s ease-out, transform 1.5s ease-out, filter 1.5s ease-out';
+        
+        // Intersection Observer 설정
+        const theFlowImageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    theFlowImageImg.style.opacity = '1';
+                    theFlowImageImg.style.transform = 'scale(1)'; // 원래 크기로
+                    theFlowImageImg.style.filter = 'blur(0px)'; // 선명하게
+                    
+                    console.log('theFlowImage img 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    theFlowImageObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // theFlowImage 섹션을 관찰
+        const theFlowImageSection = document.querySelector('.theFlowImage');
+        if (theFlowImageSection) {
+            theFlowImageObserver.observe(theFlowImageSection);
+        }
+    }
+
+    const theFlowImageP = document.querySelector('.theFlowImage p');
+
+    if (theFlowImageP) {
+        // theFlowImage p 초기 상태 설정
+        theFlowImageP.style.opacity = '0';
+        theFlowImageP.style.transform = 'translateY(10px)'; // 10px 아래로 이동
+        theFlowImageP.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const theFlowImageTextObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    theFlowImageP.style.opacity = '1';
+                    theFlowImageP.style.transform = 'translateY(0)'; // 원래 위치로
+                    
+                    console.log('theFlowImage p 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    theFlowImageTextObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // theFlowImage 섹션을 관찰
+        const theFlowImageSection = document.querySelector('.theFlowImage');
+        if (theFlowImageSection) {
+            theFlowImageTextObserver.observe(theFlowImageSection);
+        }
+    }
+
+    const woolJacketH1 = document.querySelector('.woolJacket h1');
+
+    if (woolJacketH1) {
+        // woolJacket h1 초기 상태 설정
+        woolJacketH1.style.opacity = '0';
+        woolJacketH1.style.transform = 'translateX(-10px)'; // 왼쪽으로 10px 이동
+        woolJacketH1.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const woolJacketObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    woolJacketH1.style.opacity = '1';
+                    woolJacketH1.style.transform = 'translateX(0)'; // 원래 위치로
+                    
+                    console.log('woolJacket h1 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    woolJacketObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // woolJacket 섹션을 관찰
+        const woolJacketSection = document.querySelector('.woolJacket');
+        if (woolJacketSection) {
+            woolJacketObserver.observe(woolJacketSection);
+        }
+    }
+
+    const woolJacketImages = document.querySelectorAll('.woolJacket .images img');
+
+    if (woolJacketImages.length > 0) {
+        // 모든 이미지 초기 상태 설정
+        woolJacketImages.forEach((img, index) => {
+            img.style.opacity = '0';
+            img.style.transform = 'translateX(10px)'; // 10px 오른쪽으로 이동
+            img.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        });
+        
+        // Intersection Observer 설정
+        const woolJacketImagesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 순차적으로 애니메이션 실행
+                    woolJacketImages.forEach((img, index) => {
+                        let delay = 0;
+                        
+                        if (index === 0) {
+                            delay = 0; // 첫 번째 이미지: 바로 실행
+                        } else if (index === 1) {
+                            delay = 300; // 두 번째 이미지: 0.3초 후
+                        } else if (index === 2) {
+                            delay = 500; // 세 번째 이미지: 0.5초 후 (0.3 + 0.2)
+                        }
+                        
+                        setTimeout(() => {
+                            img.style.opacity = '1';
+                            img.style.transform = 'translateX(0)'; // 원래 위치로
+                            
+                            console.log(`woolJacket img ${index + 1} 애니메이션 시작 (${delay}ms 지연)`);
+                        }, delay);
+                    });
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    woolJacketImagesObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // woolJacket 섹션을 관찰
+        const woolJacketSection = document.querySelector('.woolJacket');
+        if (woolJacketSection) {
+            woolJacketImagesObserver.observe(woolJacketSection);
+        }
+    }
+
+    const brownJacketBackgroundImage = document.querySelector('.brownJacket-container .backgroundImage');
+
+    if (brownJacketBackgroundImage) {
+        // brownJacket backgroundImage 초기 상태 설정
+        brownJacketBackgroundImage.style.opacity = '0';
+        brownJacketBackgroundImage.style.transform = 'translateY(10px)'; // 10px 아래로 이동
+        brownJacketBackgroundImage.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const brownJacketBackgroundObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    brownJacketBackgroundImage.style.opacity = '1';
+                    brownJacketBackgroundImage.style.transform = 'translateY(0)'; // 원래 위치로
+                    
+                    console.log('brownJacket backgroundImage 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    brownJacketBackgroundObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // brownJacket-container 섹션을 관찰
+        const brownJacketContainer = document.querySelector('.brownJacket-container');
+        if (brownJacketContainer) {
+            brownJacketBackgroundObserver.observe(brownJacketContainer);
+        }
+    }
+
+    const brownJacketShopLink = document.querySelector('.brownJacket-container .shopLink');
+
+    if (brownJacketShopLink) {
+        // brownJacket shopLink 초기 상태 설정
+        brownJacketShopLink.style.opacity = '0';
+        brownJacketShopLink.style.transform = 'translateX(-10px)'; // 왼쪽으로 10px 이동
+        brownJacketShopLink.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const brownJacketShopLinkObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    brownJacketShopLink.style.opacity = '1';
+                    brownJacketShopLink.style.transform = 'translateX(0)'; // 원래 위치로
+                    
+                    console.log('brownJacket shopLink 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    brownJacketShopLinkObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // brownJacket-container 섹션을 관찰
+        const brownJacketContainer = document.querySelector('.brownJacket-container');
+        if (brownJacketContainer) {
+            brownJacketShopLinkObserver.observe(brownJacketContainer);
+        }
+    }
+
+    const brownJacketSubImages = document.querySelector('.brownJacket-container .subImages');
+
+    if (brownJacketSubImages) {
+        // brownJacket subImages 초기 상태 설정
+        brownJacketSubImages.style.opacity = '0';
+        brownJacketSubImages.style.transform = 'translateX(10px)'; // 오른쪽으로 10px 이동
+        brownJacketSubImages.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const brownJacketSubImagesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    brownJacketSubImages.style.opacity = '1';
+                    brownJacketSubImages.style.transform = 'translateX(0)'; // 원래 위치로
+                    
+                    console.log('brownJacket subImages 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    brownJacketSubImagesObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // brownJacket-container 섹션을 관찰
+        const brownJacketContainer = document.querySelector('.brownJacket-container');
+        if (brownJacketContainer) {
+            brownJacketSubImagesObserver.observe(brownJacketContainer);
+        }
+    }
+
+    const theFlowBlackH1 = document.querySelector('.theFlowBlack h1');
+
+    if (theFlowBlackH1) {
+        // theFlowBlack h1 초기 상태 설정
+        theFlowBlackH1.style.opacity = '0';
+        theFlowBlackH1.style.transform = 'translateY(-10px)'; // 위로 10px 이동
+        theFlowBlackH1.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const theFlowBlackH1Observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    theFlowBlackH1.style.opacity = '1';
+                    theFlowBlackH1.style.transform = 'translateY(0)'; // 원래 위치로
+                    
+                    console.log('theFlowBlack h1 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    theFlowBlackH1Observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // theFlowBlack 섹션을 관찰
+        const theFlowBlackSection = document.querySelector('.theFlowBlack');
+        if (theFlowBlackSection) {
+            theFlowBlackH1Observer.observe(theFlowBlackSection);
+        }
+    }
+
+    const theFlowBlackImageSlider = document.querySelector('.theFlowBlack .imageSlider');
+    const theFlowBlackDescription = document.querySelector('.theFlowBlack .description');
+
+    // imageSlider 애니메이션
+    if (theFlowBlackImageSlider) {
+        theFlowBlackImageSlider.style.opacity = '0';
+        theFlowBlackImageSlider.style.transform = 'translateY(-10px)'; // 위로 10px 이동
+        theFlowBlackImageSlider.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+    }
+
+    // description 애니메이션
+    if (theFlowBlackDescription) {
+        theFlowBlackDescription.style.opacity = '0';
+        theFlowBlackDescription.style.transform = 'translateY(-10px)'; // 위로 10px 이동
+        theFlowBlackDescription.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+    }
+    
+    // Intersection Observer 설정
+    const theFlowBlackElementsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // imageSlider 애니메이션 실행
+                if (theFlowBlackImageSlider) {
+                    theFlowBlackImageSlider.style.opacity = '1';
+                    theFlowBlackImageSlider.style.transform = 'translateY(0)'; // 원래 위치로
+                    console.log('theFlowBlack imageSlider 애니메이션 시작');
+                }
+
+                // description 애니메이션 실행
+                if (theFlowBlackDescription) {
+                    theFlowBlackDescription.style.opacity = '1';
+                    theFlowBlackDescription.style.transform = 'translateY(0)'; // 원래 위치로
+                    console.log('theFlowBlack description 애니메이션 시작');
+                }
+                
+                // 한 번만 실행되도록 observer 해제
+                theFlowBlackElementsObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });   
+    
+    // theFlowBlack 섹션을 관찰
+    const theFlowBlackSection = document.querySelector('.theFlowBlack');
+    if (theFlowBlackSection) {
+        theFlowBlackElementsObserver.observe(theFlowBlackSection);
+    }
 }
 
 // 페이지 로드 시 실행
