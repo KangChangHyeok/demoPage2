@@ -271,11 +271,6 @@ body {
     aspect-ratio: 1 / 3.2;
 }
 
-.blackImage {
-    animation: blackImageFadeIn 1.8s ease-out 4.5s forwards;
-    opacity: 0;
-}
-
 .stikcyProducts2Header {
     position: relative;
     margin-top: 60px;
@@ -285,8 +280,7 @@ body {
 
 .stikcyProducts2Header img {
     width: 100%;
-    height: calc(100% * 0.674);
-    object-fit: cover;
+    height: calc(100vw * 0.8);
 }
 
 .stikcyProducts2 {
@@ -660,6 +654,7 @@ body {
 .theFlowImage {
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 
 .theFlowImage img {
@@ -814,7 +809,6 @@ body {
     margin-top: 20px;
     margin-bottom: 40px;
     align-items: space-between;
-    background-color: red;
 }
 
 .theFlowBlack .subImages .left {
@@ -824,13 +818,26 @@ body {
 }
 
 .theFlowBlack .subImages .right {
+    display: flex;
+    flex-direction: column;
     width: 65%;
-    align-items: right;
+    align-items: flex-end;
+    text-align: right;
+    justify-content: space-between;
+    padding-right: 10px;
 }
 
 .theFlowBlack .subImages .right img {
     width: 50%;
     height: 50%;
+}
+
+.theFlowBlack .subImages .right .shopLink {
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+    padding-right: 10px;
+    font-size: 3cqw;
 }
 
 @keyframes categoryAnimation {

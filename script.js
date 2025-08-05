@@ -114,6 +114,37 @@ function initScrollAnimations() {
         imageSliderObserver.observe(imageSlider);
     }
 
+    const stikcyProducts2Header = document.querySelector('.stikcyProducts2Header');
+
+    if (stikcyProducts2Header) {
+        // stikcyProducts2Header 초기 상태 설정
+        stikcyProducts2Header.style.opacity = '0';
+        stikcyProducts2Header.style.transform = 'translateY(10px)'; // 아래로 10px 이동
+        stikcyProducts2Header.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const stikcyProducts2HeaderObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    stikcyProducts2Header.style.opacity = '1';
+                    stikcyProducts2Header.style.transform = 'translateY(0)'; // 원래 위치로
+                    
+                    console.log('stikcyProducts2Header 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    stikcyProducts2HeaderObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // stikcyProducts2Header 요소를 직접 관찰
+        stikcyProducts2HeaderObserver.observe(stikcyProducts2Header);
+    }
+
     // descriptionImage 애니메이션 추가
     const descriptionImage = document.querySelector('.theFlow .descriptionImage');
     const descriptionImageImg = document.querySelector('.theFlow .descriptionImage img');
@@ -893,6 +924,86 @@ function initScrollAnimations() {
     const theFlowBlackSection = document.querySelector('.theFlowBlack');
     if (theFlowBlackSection) {
         theFlowBlackElementsObserver.observe(theFlowBlackSection);
+    }
+
+    const theFlowBlackSubImages = document.querySelectorAll('.theFlowBlack .subImages .left img');
+
+    if (theFlowBlackSubImages.length > 0) {
+        // 모든 이미지 초기 상태 설정
+        theFlowBlackSubImages.forEach((img, index) => {
+            img.style.opacity = '0';
+            
+            if (index === 0) {
+                // 첫 번째 이미지: 왼쪽으로 10px 이동
+                img.style.transform = 'translateX(-10px)';
+            } else if (index === 1) {
+                // 두 번째 이미지: 오른쪽으로 10px 이동
+                img.style.transform = 'translateX(10px)';
+            }
+            
+            img.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        });
+        
+        // Intersection Observer 설정
+        const theFlowBlackSubImagesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 모든 이미지 애니메이션 실행
+                    theFlowBlackSubImages.forEach((img, index) => {
+                        img.style.opacity = '1';
+                        img.style.transform = 'translateX(0)'; // 원래 위치로
+                        
+                        console.log(`theFlowBlack subImages img ${index + 1} 애니메이션 시작`);
+                    });
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    theFlowBlackSubImagesObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // theFlowBlack 섹션을 관찰
+        const theFlowBlackSection = document.querySelector('.theFlowBlack');
+        if (theFlowBlackSection) {
+            theFlowBlackSubImagesObserver.observe(theFlowBlackSection);
+        }
+    }
+
+    const theFlowBlackSubImagesRight = document.querySelector('.theFlowBlack .subImages .right');
+
+    if (theFlowBlackSubImagesRight) {
+        // theFlowBlack subImages right 초기 상태 설정
+        theFlowBlackSubImagesRight.style.opacity = '0';
+        theFlowBlackSubImagesRight.style.transform = 'translateY(10px)'; // 아래로 10px 이동
+        theFlowBlackSubImagesRight.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        
+        // Intersection Observer 설정
+        const theFlowBlackSubImagesRightObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 화면에 나타나면 애니메이션 실행
+                    theFlowBlackSubImagesRight.style.opacity = '1';
+                    theFlowBlackSubImagesRight.style.transform = 'translateY(0)'; // 원래 위치로
+                    
+                    console.log('theFlowBlack subImages right 애니메이션 시작');
+                    
+                    // 한 번만 실행되도록 observer 해제
+                    theFlowBlackSubImagesRightObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });   
+        
+        // theFlowBlack 섹션을 관찰
+        const theFlowBlackSection = document.querySelector('.theFlowBlack');
+        if (theFlowBlackSection) {
+            theFlowBlackSubImagesRightObserver.observe(theFlowBlackSection);
+        }
     }
 }
 
